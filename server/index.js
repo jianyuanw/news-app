@@ -1,4 +1,5 @@
 // Imports
+const express = require('express')
 const morgan = require('morgan')
 const cors = require('cors')
 const app = require('./app')
@@ -10,6 +11,8 @@ require('./models/db')
 // Middleware
 app.use(morgan('combined'))
 app.use(cors())
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
 
 // Routers
 app.use('/api/users', userRouter)
