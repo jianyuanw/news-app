@@ -1,8 +1,28 @@
 <div class="container-fluid">
-    <div class="row">
-        <div class="col border">
-            <h2>App Component</h2>
+    <div class="d-flex py-2 justify-content-between">
+        <div>
+            <i class="bi bi-newspaper"></i>
+            <a routerLink="/" class="text-decoration-none text-body fw-bold ms-1">News App</a>
+        </div>
+        <a routerLink="/articles" class="text-decoration-none">View</a>
+        <a href="#" class="text-decoration-none">Post</a>
+        <a *ngIf="!isLoggedIn()" routerLink="/login" class="text-decoration-none">Login (Guest)</a>
+        <a *ngIf="isLoggedIn()" data-bs-toggle="modal" href="#logoutModal" class="text-decoration-none">Logout ({{ getUsername() }})</a>
+    </div>
+    <app-alert></app-alert>
+    <router-outlet></router-outlet>
+</div>
+<!-- Logout Modal -->
+<div class="modal fade" id="logoutModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Confirm logout?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body d-flex justify-content-end">
+                <button type="button" class="btn btn-danger" (click)="logout()">Logout</button>
+            </div>
         </div>
     </div>
-    <app-login></app-login>
 </div>

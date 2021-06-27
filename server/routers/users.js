@@ -80,8 +80,9 @@ userRouter.post('/login', (req, res) => {
     // Verify password
     const passwordMatch = bcrypt.compareSync(password, user.password)
     if (passwordMatch) {
-      const token = jwt.sign({ id: user._id }, JWT_KEY, { expiresIn: 86400 })
-      res.status(200).json({ message: 'Login success', token: token })
+      const expiresIn = 3600
+      const token = jwt.sign({ id: user._id }, JWT_KEY, { expiresIn })
+      res.status(200).json({ message: 'Login success', token, username, expiresIn })
     } else {
       res.status(401).send('Incorrect username or password.')
     }
@@ -91,7 +92,7 @@ userRouter.post('/login', (req, res) => {
 // Logout
 // POST /api/users/logout
 userRouter.post('/logout', auth, (req, res) => {
-  res.status(200).json({ message: 'Logout success', token: null })
+  res.status(200).json({ message: 'Logout success', token: null, username: null })
 })
 
 module.exports = userRouter
