@@ -2,11 +2,17 @@ const jwt = require('jsonwebtoken')
 const User = require('../models/user.model')
 
 const auth = (req, res, next) => {
-  const token = req.headers['x-access-token']
-  
-  if (!token) {
-    return res.status(401).json({ auth: false, message: 'No token provided.' })
+  const authHeader = req.headers['authorization']
+
+  if (!authHeader) {
+    return res.status(401).json({ auth: false, message: 'No Authorization header provided.' })
   }
+
+  if (!authHeader.startsWith('Bearer')) {
+    return res.status(401).json({ auth: false, message: 'Incorrect Authorization header format.' })
+  }
+
+  const token = authHeader.substring(7);
 
   jwt.verify(token, process.env.JWT_KEY, (err, decoded) => {
     if (err) {

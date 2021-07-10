@@ -92,7 +92,7 @@ userRouter.post('/login', (req, res) => {
 // Logout
 // POST /api/users/logout
 userRouter.post('/logout', auth, (req, res) => {
-  res.status(200).json({ message: 'Logout success', token: null, username: null })
+  res.status(200).json({ message: 'Logout success', token: null, username: null, expiresIn: null })
 })
 
 module.exports = userRouter

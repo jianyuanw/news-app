@@ -4,8 +4,8 @@
             <i class="bi bi-newspaper"></i>
             <a routerLink="/" class="text-decoration-none text-body fw-bold ms-1">News App</a>
         </div>
-        <a routerLink="/articles" class="text-decoration-none">View</a>
-        <a href="#" class="text-decoration-none">Post</a>
+        <a routerLink="/articles/view" class="text-decoration-none">View</a>
+        <a routerLink="/articles/post" class="text-decoration-none">Post</a>
         <a *ngIf="!isLoggedIn()" routerLink="/login" class="text-decoration-none">Login (Guest)</a>
         <a *ngIf="isLoggedIn()" data-bs-toggle="modal" href="#logoutModal" class="text-decoration-none">Logout ({{ getUsername() }})</a>
     </div>
@@ -21,7 +21,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body d-flex justify-content-end">
-                <button type="button" class="btn btn-danger" (click)="logout()">Logout</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="logout()">Logout</button>
             </div>
         </div>
     </div>

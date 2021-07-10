@@ -1,0 +1,26 @@
+<h4 class="my-3">Capture Image for Article</h4>
+<div class="text-center border border-secondary pt-1">
+  <webcam
+    [width]="350"
+    [trigger]="triggerObservable" (imageCapture)="handleImage($event)"
+    [allowCameraSwitch]="false" [switchCamera]="nextWebcamObservable"
+  ></webcam>
+</div>
+<div class="d-flex justify-content-between mt-3">
+  <button type="button" class="btn btn-dark" (click)="back()">
+    Back
+    <i class="bi bi-arrow-left-circle-fill"></i>
+  </button>
+  <button type="button" class="btn btn-danger" (click)="capture()">
+    Capture
+    <i class="bi bi-camera-fill"></i>
+  </button>
+  <button type="button" class="btn btn-info" (click)="switch()" [disabled]="!multipleWebcamsAvailable">
+    Switch
+    <i class="bi bi-arrow-repeat"></i>
+  </button>
+</div>
+<div *ngIf="webcamImage">
+  <h4 class="my-3">Captured Image</h4>
+  <img [src]="webcamImage.imageAsDataUrl" class="w-100">
+</div>

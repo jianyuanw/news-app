@@ -1,0 +1,35 @@
+<form [formGroup]="form" (ngSubmit)="post()">
+  <h4 class="my-3">Share Something Today</h4>
+  <div class="text-center mb-3">
+    <img src="../../assets/cactus.jpg" class="w-50 border border-dark">
+  </div>
+  <label for="title" class="h5 mb-2">Title</label>
+  <input
+    type="text"
+    class="form-control mb-3"
+    id="title"
+    placeholder="Title"
+    formControlName="title">
+  <label for="comments" class="h5 mb-2">Comments</label>
+  <textarea
+    class="form-control mb-3"
+    id="comments"
+    placeholder="Your thoughts"
+    formControlName="comments"
+    rows="5">
+  </textarea>
+  <div class="d-flex justify-content-between">
+    <button type="submit" class="btn btn-primary" [disabled]="form.invalid">
+      Share
+      <i class="bi bi-share-fill"></i>
+    </button>
+    <button type="button" class="btn btn-warning">
+      Clear
+      <i class="bi bi-trash-fill"></i>
+    </button>
+    <button type="button" class="btn btn-danger" (click)="capture()">
+      Capture
+      <i class="bi bi-camera-fill"></i>
+    </button>
+  </div>
+</form>

@@ -1,23 +1,26 @@
 <form [formGroup]="form" (ngSubmit)="login()">
-    <h4 class="my-3">Please Login</h4>
-    <div class="form-floating">
-        <input
-            type="text"
-            class="form-control"
-            id="username"
-            placeholder="Username"
-            formControlName="username">
-        <label for="username">Username</label>
-    </div>
-    <div class="form-floating mb-3">
-        <input
-            type="password"
-            class="form-control"
-            id="password"
-            placeholder="Password"
-            formControlName="password">
-        <label for="password">Password</label>
-    </div>
-    <p *ngIf="loginError" class="text-danger">Incorrect username or password</p>
-    <button type="submit" class="btn btn-primary btn-lg w-100" [disabled]="form.invalid">Login</button>
+  <h4 class="my-3">Please Login</h4>
+  <div class="form-floating mb-1">
+    <input
+      type="text"
+      class="form-control"
+      id="username"
+      placeholder="Username"
+      formControlName="username">
+    <label for="username">Username</label>
+  </div>
+  <div class="form-floating mb-3">
+    <input
+      type="password"
+      class="form-control"
+      id="password"
+      placeholder="Password"
+      formControlName="password">
+    <label for="password">Password</label>
+  </div>
+  <p *ngIf="loginError" class="text-danger">Incorrect username or password</p>
+  <button type="submit" class="btn btn-success btn-lg w-100" [disabled]="form.invalid">
+    Login
+    <i class="bi bi-door-open-fill"></i>
+  </button>
 </form>
