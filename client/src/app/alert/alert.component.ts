@@ -20,11 +20,12 @@ export class AlertComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.alertSubscription = this.alertService.getAlert().subscribe(message => {
-      // console.log(`In alertComponent | subscribed message = ${message}`);
+      console.log(`In alertComponent | subscribed message = ${message}`);
       if (message) {
         this.message = message;
+        this.showAlert();
       } else {
-        this.message = '';
+        this.hideAlert();
       }
     });
     this.routeSubscription = this.router.events.subscribe(event => {
@@ -37,5 +38,13 @@ export class AlertComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.alertSubscription.unsubscribe();
     this.routeSubscription.unsubscribe();
+  }
+
+  hideAlert(): void {
+    document.getElementById('alert').style.display = 'none';
+  }
+
+  showAlert(): void {
+    document.getElementById('alert').style.display = '';
   }
 }

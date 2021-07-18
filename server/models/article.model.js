@@ -2,9 +2,11 @@ const mongoose = require('mongoose')
 
 const schema = mongoose.Schema({
   title: String,
-  content: String,
-  imageSrc: String,
-  userId: String
+  comments: String,
+  imageBuffer: Buffer,
+  imageMimeType: String,
+  datePosted: Date,
+  username: String
 })
 
 const Article = mongoose.model('Article', schema)

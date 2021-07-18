@@ -1,7 +1,7 @@
 <form [formGroup]="form" (ngSubmit)="post()">
   <h4 class="my-3">Share Something Today</h4>
   <div class="text-center mb-3">
-    <img src="../../assets/cactus.jpg" class="w-50 border border-dark">
+    <img [src]="imageSrc" [ngClass]="imgClass">
   </div>
   <label for="title" class="h5 mb-2">Title</label>
   <input
@@ -19,11 +19,12 @@
     rows="5">
   </textarea>
   <div class="d-flex justify-content-between">
-    <button type="submit" class="btn btn-primary" [disabled]="form.invalid">
+    <button type="submit" class="btn btn-primary"
+        [disabled]="form.invalid || !isImageCaptured()">
       Share
       <i class="bi bi-share-fill"></i>
     </button>
-    <button type="button" class="btn btn-warning">
+    <button type="button" class="btn btn-warning" (click)="clear()">
       Clear
       <i class="bi bi-trash-fill"></i>
     </button>

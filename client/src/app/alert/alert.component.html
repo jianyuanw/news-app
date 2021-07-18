@@ -1,4 +1,4 @@
-<div *ngIf="message" class="alert alert-success alert-dismissible fade show mt-2" role="alert">
-    {{ message }}
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+<div id="alert" class="alert alert-success alert-dismissible fade show mt-2" role="alert">
+  {{ message }}
+  <button type="button" class="btn-close" aria-label="Close" (click)="hideAlert()"></button>
 </div>

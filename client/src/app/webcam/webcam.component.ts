@@ -10,7 +10,6 @@ import { Observable, Subject } from 'rxjs';
 })
 export class WebcamComponent implements OnInit {
   multipleWebcamsAvailable: boolean;
-  webcamImage: WebcamImage = null;
   trigger: Subject<void> = new Subject<void>();
   nextWebcam: Subject<boolean|string> = new Subject<boolean|string>();
 
@@ -36,7 +35,8 @@ export class WebcamComponent implements OnInit {
   }
 
   handleImage(webcamImage: WebcamImage): void {
-    this.webcamImage = webcamImage;
+    localStorage.setItem('imageSrc', webcamImage.imageAsDataUrl);
+    this.router.navigateByUrl('articles/post');
   }
 
   get triggerObservable(): Observable<void> {

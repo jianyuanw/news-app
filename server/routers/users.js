@@ -9,15 +9,6 @@ const JWT_KEY = process.env.JWT_KEY
 
 const userRouter = express.Router()
 
-// For testing only
-userRouter.get('/token', auth, (req, res) => {
-  res.status(200).json({
-    method: req.method,
-    url: req.originalUrl,
-    user: req.user
-  })
-})
-
 // Register
 // POST /api/users/register
 userRouter.post('/register', (req, res) => {

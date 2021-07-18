@@ -22,7 +22,7 @@ export class AuthService {
     let success = false;
     this.http.post<LoginResponse>(`${SERVER_URL}/api/users/login`, body).toPromise()
       .then((data: LoginResponse) => {
-        // console.log(`Message: ${data.message}\nUsername: ${data.username}\nToken: ${data.token}\nExpiresIn: ${data.expiresIn}`);
+        localStorage.clear();
         const date = new Date();
         date.setSeconds(date.getSeconds() + data.expiresIn);
         localStorage.setItem('token', data.token);
@@ -58,9 +58,7 @@ export class AuthService {
   }
 
   logout(): void {
-    localStorage.removeItem('token');
-    localStorage.removeItem('username');
-    localStorage.removeItem('expiresAt');
+    localStorage.clear();
     this.router.navigateByUrl('');
     this.alertService.sendAlert('Logout successful!');
   }
