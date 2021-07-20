@@ -1,6 +1,6 @@
 # News App
 Full stack web application for posting and viewing news articles.
 
-MongoDB - Angular - Express - Nodejs
+MongoDB - Express - Angular - Nodejs (MEAN stack)
 
-Work in progress.
+Completed on 20 July 2021.
