@@ -19,7 +19,7 @@ app.use('/api/users', userRouter)
 app.use('/api/articles', articleRouter)
 
 // Start application once database is connected
-const PORT = process.env.port
+const PORT = process.env.PORT
 console.log(`Port = ${PORT}`)
 
 app.once('dbConnected', () => {
