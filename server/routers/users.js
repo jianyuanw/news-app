@@ -6,6 +6,7 @@ const auth = require('../middleware/auth')
 require('dotenv').config()
 
 const JWT_KEY = process.env.JWT_KEY
+console.log(`JWT Key = ${JWT_KEY}`)
 
 const userRouter = express.Router()
 

@@ -20,6 +20,7 @@ app.use('/api/articles', articleRouter)
 
 // Start application once database is connected
 const PORT = process.env.port
+console.log(`Port = ${PORT}`)
 
 app.once('dbConnected', () => {
   app.listen(PORT, () => {
