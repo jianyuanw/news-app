@@ -15,11 +15,15 @@ import { AuthInterceptor } from './http-interceptors/auth-interceptor';
 import { AuthGuard } from './auth/auth.guard';
 import { WebcamModule } from 'ngx-webcam';
 import { WebcamComponent } from './webcam/webcam.component';
+import { ArticleComponent } from './article/article.component';
+import { RegisterComponent } from './register/register.component';
 
 const ROUTES: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
   { path: 'articles/view', component: ArticleListComponent },
+  { path: 'articles/view/:id', component: ArticleComponent },
   { path: 'articles/post', component: PostArticleComponent, canActivate: [AuthGuard] },
   { path: 'articles/capture', component: WebcamComponent, canActivate: [AuthGuard] },
   { path: '**', component: PageNotFoundComponent }
@@ -34,7 +38,9 @@ const ROUTES: Routes = [
     ArticleListComponent,
     AlertComponent,
     PostArticleComponent,
-    WebcamComponent
+    WebcamComponent,
+    ArticleComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

@@ -16,7 +16,11 @@ export class ArticleListComponent implements OnInit {
   ngOnInit(): void {
     this.http.get<Article[]>(`${SERVER_URL}/api/articles`).toPromise()
       .then(data => {
-        console.log(data);
+        data.forEach(article => {
+          article.imageDataUrl = 'data:' + article.imageMimeType + ';base64,'
+              + article.imageBuffer;
+        });
+        this.articles = data;
       })
       .catch(err => {
         console.error(err);

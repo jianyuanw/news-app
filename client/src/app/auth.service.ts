@@ -66,4 +66,10 @@ export class AuthService {
   getToken(): string {
     return localStorage.getItem('token');
   }
+
+  register(username: string, password: string): Promise<any> {
+    const body = { username, password };
+    return this.http.post<any>(`${SERVER_URL}/api/users/register`, body)
+        .toPromise();
+  }
 }

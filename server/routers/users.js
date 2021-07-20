@@ -18,6 +18,7 @@ userRouter.post('/register', (req, res) => {
   // Validate username & password
   const alphanumeric = /^[A-Za-z0-9]+$/
   if (!username.match(alphanumeric) || !password.match(alphanumeric)) {
+    console.log('Username and password can only contain alphanumeric characters.')
     return res.send('Username and password can only contain alphanumeric characters.')
   }
   
@@ -25,13 +26,13 @@ userRouter.post('/register', (req, res) => {
   User.exists({ username }, (err, result) => {
     if (err) {
       console.error(`Error in User.exists: ${err}`)
-      return res.send(err)
+      return res.status(400).send(err)
     } 
 
     // Username exists
     if (result) {
       console.info(`Username exists.`)
-      return res.send('Username is not available for registration.')
+      return res.status(400).send('Username is not available for registration.')
     }
 
     // Username ok --> encode password
@@ -44,7 +45,7 @@ userRouter.post('/register', (req, res) => {
       password: hash
     })
     user.save().then(() => {
-      res.status(201).send('Account created')
+      res.status(201).json('Account created')
     })
   })
 })
