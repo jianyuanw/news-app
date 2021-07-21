@@ -14,6 +14,9 @@ app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
+// Static files (eg. Angular application)
+app.use(express.static('dist/client'))
+
 // Routers
 app.use('/api/users', userRouter)
 app.use('/api/articles', articleRouter)
