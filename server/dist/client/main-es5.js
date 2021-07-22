@@ -2073,9 +2073,10 @@
 
       __webpack_require__.d(__webpack_exports__, "SERVER_URL", function () {
         return SERVER_URL;
-      });
+      }); // export const SERVER_URL = 'http://localhost:3000';
 
-      var SERVER_URL = 'http://localhost:3000';
+
+      var SERVER_URL = '';
       /***/
     },
 

@@ -1043,7 +1043,8 @@ WebcamComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineCo
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SERVER_URL", function() { return SERVER_URL; });
-const SERVER_URL = 'http://localhost:3000';
+// export const SERVER_URL = 'http://localhost:3000';
+const SERVER_URL = '';
 
 
 /***/ }),
